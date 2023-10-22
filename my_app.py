@@ -13,7 +13,7 @@ class First_screen(QWidget):
         self.set_appearance()
         self.initialise()
         self.show()
-        
+        # Comment added
 
     def create_ui(self):
         self.intro = QLabel(txt_hello)
