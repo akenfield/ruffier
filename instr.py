@@ -28,6 +28,11 @@ txt_starttest2 = 'Start doing squats'
 txt_starttest3 = 'Start the final test'
 txt_timer = ''
 
+txt_res1 = "low. See your doctor right away!"
+txt_res2 = "satisfactory. See your doctor!"
+txt_res3 = "average. It may be worth seeing your doctor to get checked out."
+txt_res4 = "above average"
+txt_res5 = "high"
 
 txt_age = 'Full years:'
 txt_finalwin = 'Results'
