@@ -1,10 +1,13 @@
-# write here a code for the main app and the first screen
+# Importing from the PyQt6 libraries
 from PyQt6.QtGui import *
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
+
+# Importing from other .py files
 from instr import *
 from final_win import *
 
+# Supplementary class to store information neatly
 class Patient_Info():
     def __init__(self, name, age, r_1, r_2, r_3):
         self.name = name
@@ -13,11 +16,19 @@ class Patient_Info():
         self.r_2 = int(r_2)
         self.r_3 = int(r_3)
 
+# Creating our own class for the second window, INHERITING from QWidget
 class Second_screen(QWidget):
     def __init__(self):
+        # Call the parent constructor to inherit everything
         super().__init__()
+
+        # Create and organise the user interface components
         self.create_ui()
+
+        # Give the window a name, resize it, and move it to specific location
         self.set_appearance()
+
+        # Initialise the buttons
         self.initialise()
         self.show()
 
@@ -91,17 +102,31 @@ class Second_screen(QWidget):
         self.timer.setStyleSheet("color: rgb(0, 0, 0)")
 
     def cd_a(self):
+        # Get the global time variable and minus 1 to the second
         global time
         time = time.addSecs(-1)
+
+        # Update the timer to new time after counting down
         self.display_timer_a()
+
+        # Convert the time into seconds
         seconds = QTime(0,0,0).secsTo(time)
+
+        # If the second is 0, then we stop timer
         if seconds <= 0:
             self.timer_widget.stop()
 
     def display_timer_b(self):
+        # Convert QTime to HH:MM:SS format
         self.timer.setText(time.toString("hh:mm:ss"))
+
+        # Set the QLabel's font
         self.timer.setFont(QFont("Times", 36, QFont.Weight.Bold))
+
+        # Convert the time into seconds
         seconds = QTime(0,0,0).secsTo(time)
+        
+        # If it;s the first 15s or the last 15s, we colour it green, else it's black
         if seconds > 45 or seconds < 16:
             self.timer.setStyleSheet("color: rgb(0,255,0)")
         else:
@@ -116,11 +141,21 @@ class Second_screen(QWidget):
             self.timer_widget.stop()
 
     def test_1_timer(self):
+        # (In the case we run a timer for the first time, we also create the time variable)
+        # Get the global variable time, then set the time using QTime()
         global time
         time = QTime(0, 0 , 15)
+
+        # Display initial timer
         self.display_timer_a()
+
+        # Create a QTimer to keep track and countdown seconds
         self.timer_widget = QTimer()
+
+        # Set the interval to 1000ms = 1s
         self.timer_widget.start(1000)
+
+        # Every time the interval times out, we call the countdown logic
         self.timer_widget.timeout.connect(self.cd_a)
 
     def test_2_timer(self):
@@ -141,6 +176,8 @@ class Second_screen(QWidget):
 
     def initialise(self):
         self.send_result_button.clicked.connect(self.next_screen)
+
+        # Connect each start test button with their respective function
         self.first_button.clicked.connect(self.test_1_timer)
         self.second_button.clicked.connect(self.test_2_timer)
         self.third_button.clicked.connect(self.test_3_timer)

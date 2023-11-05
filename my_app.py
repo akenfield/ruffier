@@ -1,17 +1,30 @@
-# write here a code for the main app and the first screen
+# Importing from the PyQt6 libraries
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
+
+# Importing from other .py files
 from instr import *
 from second_win import *
 
+# Creating the application container
 app = QApplication([])
 
+# Creating our own class for the first window, INHERITING from QWidget
 class First_screen(QWidget):
     def __init__(self):
+        # Call the parent constructor to inherit everything
         super().__init__()
+
+        # Create and organise the user interface components
         self.create_ui()
+
+        # Give the window a name, resize it, and move it to specific location
         self.set_appearance()
+
+        # Initialise the buttons
         self.initialise()
+
+        # Show the first window
         self.show()
 
     def create_ui(self):

@@ -4,9 +4,10 @@ from PyQt6.QtWidgets import *
 from instr import *
 
 class Third_screen(QWidget):
-    def __init__(self, info):
+    def __init__(self, i):
         super().__init__()
-        self.info = info
+        # Create the info property from the i parameter
+        self.info = i
         self.create_ui()
         self.set_appearance()
         self.show()
@@ -25,10 +26,12 @@ class Third_screen(QWidget):
         self.setLayout(self.vlayout)
 
     def calculate_result(self):
+        # If the age is less than 7, then we have no info and return nothing. The index score is 0
         if self.info.age < 7:
             self.index = 0
             return "No info for this age"
         
+        # Calculate the index using ruffier formula
         self.index = ((self.info.r_1 + self.info.r_2 + self.info.r_3) - 200) / 10
 
         if self.info.age >= 7 and self.info.age <= 8:
