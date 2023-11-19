@@ -1,3 +1,4 @@
+# Final lesson at Algorithmics Python Pro year 1
 # Importing from the PyQt6 libraries
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
