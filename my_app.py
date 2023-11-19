@@ -1,4 +1,4 @@
-# Final lesson at Algorithmics Python Pro year 1
+# Final lesson at Algorithmics Python Pro year 1 19/11/2023
 # Importing from the PyQt6 libraries
 from PyQt6.QtCore import *
 from PyQt6.QtWidgets import *
